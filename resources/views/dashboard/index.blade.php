@@ -1,0 +1,78 @@
+@extends('layouts.app')
+
+@section('title', 'Dashboard')
+@section('page-title', 'Dashboard')
+
+@section('content')
+<div class="row">
+    <div class="col-lg-3 col-6">
+        <div class="small-box bg-info">
+            <div class="inner">
+                <h3>{{ $citizenCount }}</h3>
+                <p>Registered Citizens</p>
+            </div>
+            <div class="icon"><i class="fas fa-users"></i></div>
+            <a href="{{ route('citizens.index') }}" class="small-box-footer">View all <i class="fas fa-arrow-circle-right"></i></a>
+        </div>
+    </div>
+    <div class="col-lg-3 col-6">
+        <div class="small-box bg-success">
+            <div class="inner">
+                <h3>{{ $visaCount }}</h3>
+                <p>Visa Records</p>
+            </div>
+            <div class="icon"><i class="fas fa-passport"></i></div>
+            <a href="{{ route('visas.index') }}" class="small-box-footer">Manage visas <i class="fas fa-arrow-circle-right"></i></a>
+        </div>
+    </div>
+    <div class="col-lg-3 col-6">
+        <div class="small-box bg-warning">
+            <div class="inner">
+                <h3>{{ $openCaseCount }}</h3>
+                <p>Open Assistance Cases</p>
+            </div>
+            <div class="icon"><i class="fas fa-hands-helping"></i></div>
+            <a href="{{ route('assistance.index') }}" class="small-box-footer">View cases <i class="fas fa-arrow-circle-right"></i></a>
+        </div>
+    </div>
+    <div class="col-lg-3 col-6">
+        <div class="small-box bg-secondary">
+            <div class="inner">
+                <h3>{{ $documentCount }}</h3>
+                <p>Stored Documents</p>
+            </div>
+            <div class="icon"><i class="fas fa-folder-open"></i></div>
+            <a href="{{ route('documents.index') }}" class="small-box-footer">View documents <i class="fas fa-arrow-circle-right"></i></a>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Quick Actions</h3>
+            </div>
+            <div class="card-body">
+                <a href="{{ route('citizens.create') }}" class="btn btn-primary mr-2 mb-2">
+                    <i class="fas fa-user-plus"></i> Register Citizen
+                </a>
+                <a href="{{ route('search') }}" class="btn btn-outline-primary mr-2 mb-2">
+                    <i class="fas fa-search"></i> Global Search
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">System</h3>
+            </div>
+            <div class="card-body">
+                <p class="text-muted mb-1">Single-user consular workstation</p>
+                <p class="text-muted mb-0"><small>No login required — local use only</small></p>
+            </div>
+        </div>
+    </div>
+</div>
+@endsection

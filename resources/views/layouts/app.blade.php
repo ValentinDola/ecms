@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>@yield('title', 'Dashboard') — {{ config('app.name') }}</title>
+
+    {{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"> --}}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/css/adminlte.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <style>
+        .brand-text { font-size: 1rem; }
+        .content-wrapper { min-height: calc(100vh - 57px); }
+    </style>
+    @stack('styles')
+</head>
+<body class="hold-transition sidebar-mini layout-fixed">
+<div class="wrapper">
+
+    <nav class="main-header navbar navbar-expand navbar-white navbar-light border-bottom">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+            </li>
+        </ul>
+
+        <form action="{{ route('search') }}" method="GET" class="form-inline ml-3 flex-grow-1">
+            <div class="input-group input-group-sm w-100" style="max-width: 480px;">
+                <input type="search" name="q" class="form-control" placeholder="Search name, passport, visa, phone, case ID…"
+                       value="{{ request('q') }}">
+                <div class="input-group-append">
+                    <button class="btn btn-primary" type="submit"><i class="fas fa-search"></i></button>
+                </div>
+            </div>
+        </form>
+    </nav>
+
+    <aside class="main-sidebar sidebar-dark-primary elevation-4">
+        <a href="{{ route('dashboard') }}" class="brand-link">
+            <span class="brand-text font-weight-light ml-3">ECMS — Togo Embassy</span>
+        </a>
+        <div class="sidebar">
+            <nav class="mt-2">
+                <ul class="nav nav-pills nav-sidebar flex-column" role="menu">
+                    <li class="nav-item">
+                        <a href="{{ route('dashboard') }}" class="nav-link {{ request()->routeIs('dashboard') ? 'active' : '' }}">
+                            <i class="nav-icon fas fa-tachometer-alt"></i>
+                            <p>Dashboard</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('citizens.index') }}" class="nav-link {{ request()->routeIs('citizens.*') ? 'active' : '' }}">
+                            <i class="nav-icon fas fa-users"></i>
+                            <p>Citizen Registry</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('visas.index') }}" class="nav-link {{ request()->routeIs('visas.*') ? 'active' : '' }}">
+                            <i class="nav-icon fas fa-passport"></i>
+                            <p>Visa Management</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('assistance.index') }}" class="nav-link {{ request()->routeIs('assistance.*') ? 'active' : '' }}">
+                            <i class="nav-icon fas fa-hands-helping"></i>
+                            <p>Consular Assistance</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('documents.index') }}" class="nav-link {{ request()->routeIs('documents.*') ? 'active' : '' }}">
+                            <i class="nav-icon fas fa-folder-open"></i>
+                            <p>Documents</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('search') }}" class="nav-link {{ request()->routeIs('search') ? 'active' : '' }}">
+                            <i class="nav-icon fas fa-search"></i>
+                            <p>Global Search</p>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </aside>
+
+    <div class="content-wrapper">
+        <section class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="m-0">@yield('page-title', 'Dashboard')</h1>
+                    </div>
+                    @hasSection('breadcrumb')
+                        <div class="col-sm-6">
+                            @yield('breadcrumb')
+                        </div>
+                    @endif
+                </div>
+            </div>
+        </section>
+
+        <section class="content">
+            <div class="container-fluid">
+                @include('partials.flash')
+                @yield('content')
+            </div>
+        </section>
+    </div>
+
+    <footer class="main-footer text-sm">
+        <strong>Embassy of the Republic of Togo in Ghana</strong> — Consular Management System
+    </footer>
+</div>
+
+@include('partials.modals')
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/js/adminlte.min.js"></script>
+@stack('scripts')
+</body>
+</html>
