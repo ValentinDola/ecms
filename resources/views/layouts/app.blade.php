@@ -17,7 +17,7 @@
         * {
             font-family: 'Source Code Pro', ui-sans-serif, system-ui, sans-serif !important;
         }
-        .brand-text { font-size: 1rem; }
+        .brand-text { font-size: 1.5rem; }
         .content-wrapper { min-height: calc(100vh - 57px); }
     </style>
     @stack('styles')
@@ -32,7 +32,7 @@
             </li>
         </ul>
 
-        <form action="{{ route('search') }}" method="GET" class="form-inline ml-3 flex-grow-1">
+        <form action="{{ route('search') }}" method="GET" class="form-inline ml-3 grow">
             <div class="input-group input-group-sm w-100" style="max-width: 480px;">
                 <input type="search" name="q" class="form-control" placeholder="Search name, passport, visa, phone, case ID…"
                        value="{{ request('q') }}">
@@ -45,7 +45,7 @@
 
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
         <a href="{{ route('dashboard') }}" class="brand-link">
-            <span class="brand-text font-weight-light ml-3">ECMS — Togo Embassy</span>
+            <span class="brand-text font-weight-light ml-3">ECMS</span>
         </a>
         <div class="sidebar">
             <nav class="mt-2">
@@ -80,10 +80,17 @@
                             <p>Documents</p>
                         </a>
                     </li>
+                    
                     <li class="nav-item">
                         <a href="{{ route('search') }}" class="nav-link {{ request()->routeIs('search') ? 'active' : '' }}">
                             <i class="nav-icon" data-lucide="search"></i>
                             <p>Global Search</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('reports.index') }}" class="nav-link {{ request()->routeIs('reports.*') ? 'active' : '' }}">
+                            <i class="nav-icon" data-lucide="file-text"></i>
+                            <p>Reports</p>
                         </a>
                     </li>
                 </ul>
@@ -116,7 +123,19 @@
     </div>
 
     <footer class="main-footer text-sm">
-        <strong>Embassy of the Republic of Togo in Ghana</strong> — Consular Management System
+        <div class="d-flex justify-content-between align-items-center">
+            <div>
+                <strong>Embassy Consular Management System (ECMS)</strong> 
+            </div>
+            <div class="text-muted small">
+                System health:
+                <span class="badge badge-{{ $systemHealth['status'] === 'Healthy' ? 'success' : 'danger' }}">
+                    {{ $systemHealth['status'] }}
+                </span>
+                · DB: {{ $systemHealth['db'] }}
+                · Env: {{ ucfirst($systemHealth['env']) }}
+            </div>
+        </div>
     </footer>
 </div>
 

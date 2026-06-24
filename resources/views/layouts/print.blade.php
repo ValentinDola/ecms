@@ -4,15 +4,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@yield('title', 'Print') — {{ config('app.name') }}</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    
     <style>
         @page { size: A4; margin: 15mm; }
-        * { box-sizing: border-box; }
+        * { box-sizing: border-box; font-family: 'Source Code Pro', ui-sans-serif, system-ui, sans-serif !important; }
         body {
-            font-family: Georgia, 'Times New Roman', serif;
-            font-size: 12pt;
-            color: #111;
-            margin: 0;
-            padding: 20mm;
+            padding: 20px;
         }
         .letterhead {
             text-align: center;
@@ -55,20 +53,29 @@
     @stack('styles')
 </head>
 <body>
-    <div class="no-print">
+    <!-- <div class="no-print">
         <button onclick="window.print()">Print (Ctrl+P)</button>
         <a href="javascript:history.back()">Back</a>
-    </div>
+    </div> -->
 
-    <div class="letterhead">
+    <button class="btn btn-sm btn-outline-secondary no-print mb-3" onclick="window.print()">
+        <i data-lucide="printer"></i> Print
+    </button>
+
+    <!-- <div class="letterhead">
         <h1>Embassy of the Republic of Togo</h1>
         <p>Accra, Ghana — Consular Section</p>
-    </div>
+    </div> -->
 
     @yield('content')
 
-    <div class="footer">
+    <!-- <div class="footer">
         Printed on {{ now()->format('d M Y H:i') }} — {{ config('app.name') }}
-    </div>
+    </div> -->
+
+        <script src="https://cdn.jsdelivr.net/npm/lucide@1.21.0/dist/umd/lucide.min.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
 </body>
 </html>

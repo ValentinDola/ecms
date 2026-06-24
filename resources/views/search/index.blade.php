@@ -4,6 +4,25 @@
 @section('page-title', 'Global Search')
 
 @section('content')
+<div class="row mb-3">
+    <div class="col-md-12">
+        <ul class="nav nav-tabs" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" href="{{ route('search') }}" role="tab">
+                    <i data-lucide="search" style="display: inline-block; width: 16px; height: 16px;"></i>
+                    Search
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('reports.index') }}" role="tab">
+                    <i data-lucide="file-text" style="display: inline-block; width: 16px; height: 16px;"></i>
+                    Reports
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+
 <div class="card mb-3">
     <div class="card-body">
         <form method="GET" action="{{ route('search') }}">

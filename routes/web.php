@@ -5,6 +5,7 @@ use App\Http\Controllers\CitizenController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\PrintController;
+use App\Http\Controllers\ReportingController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\VisaController;
 use Illuminate\Support\Facades\Route;
@@ -12,6 +13,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
 Route::get('/search', [SearchController::class, 'index'])->name('search');
+
+Route::get('/reports', [ReportingController::class, 'index'])->name('reports.index');
+Route::get('/reports/print', [ReportingController::class, 'print'])->name('reports.print');
 
 Route::resource('citizens', CitizenController::class);
 

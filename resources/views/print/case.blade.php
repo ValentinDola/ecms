@@ -10,7 +10,12 @@
     <table>
         <tr><th>Reference Number</th><td>{{ $case->ref_no }}</td></tr>
         <tr><th>Case Type</th><td>{{ \App\Models\AssistanceCase::TYPES[$case->case_type] ?? $case->case_type }}</td></tr>
-        <tr><th>Status</th><td>{{ \App\Models\AssistanceCase::STATUSES[$case->status] ?? $case->status }}</td></tr>
+        <tr><th>Status</th><tr>
+    <th>Status</th>
+    <td style="font-weight: normal;">
+        {{ \App\Models\AssistanceCase::STATUSES[$case->status] ?? $case->status }}
+    </td>
+</tr></tr>
         <tr><th>Opened</th><td>{{ $case->opened_at->format('d M Y H:i') }}</td></tr>
         @if ($case->closed_at)
             <tr><th>Closed</th><td>{{ $case->closed_at->format('d M Y H:i') }}</td></tr>

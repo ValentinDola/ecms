@@ -48,7 +48,7 @@
 </div>
 
 <div class="row">
-    <div class="col-md-8">
+    <div class="col-12">
         <div class="card">
             <div class="card-header">
                 <h3 class="card-title">Quick Actions</h3>
@@ -57,26 +57,21 @@
                 <a href="{{ route('citizens.create') }}" class="btn btn-primary mr-2 mb-2">
                     <i data-lucide="user-plus"></i> Register Citizen
                 </a>
+
                 <a href="{{ route('search') }}" class="btn btn-outline-primary mr-2 mb-2">
                     <i data-lucide="search"></i> Global Search
                 </a>
+
                 <a href="{{ route('visas.create') }}" class="btn btn-outline-success mr-2 mb-2">
                     <i data-lucide="id-card"></i> Create Visa
                 </a>
+
                 <a href="{{ route('assistance.create') }}" class="btn btn-outline-warning mr-2 mb-2">
                     <i data-lucide="hand-helping"></i> Assistance Case
                 </a>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-4">
-        <div class="card">
-            <div class="card-header">
-                <h3 class="card-title">System</h3>
-            </div>
-            <div class="card-body">
-                <p class="text-muted mb-1">Single-user consular workstation</p>
-                <p class="text-muted mb-0"><small>No login required — local use only</small></p>
+                <a href="{{ route('reports.index') }}" class="btn btn-outline-secondary mr-2 mb-2">
+                    <i data-lucide="file-text"></i> Reports
+                </a>
             </div>
         </div>
     </div>
