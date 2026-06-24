@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Traits\HasHybridIdentifier;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -10,6 +11,10 @@ use Illuminate\Database\Eloquent\Relations\MorphMany;
 class AssistanceCase extends Model
 {
     use HasFactory;
+    use HasHybridIdentifier;
+
+    protected static string $refNoModule = 'ASC';
+    protected array $syncReferenceToLegacyField = ['case_number'];
 
     public const TYPES = [
         'lost_passport'          => 'Lost Passport',
@@ -35,6 +40,7 @@ class AssistanceCase extends Model
     ];
 
     protected $fillable = [
+        'ref_no',
         'case_number',
         'citizen_id',
         'case_type',
@@ -62,5 +68,10 @@ class AssistanceCase extends Model
     public function documents(): MorphMany
     {
         return $this->morphMany(Document::class, 'documentable');
+    }
+
+    public function getCaseNumberAttribute(?string $value): string
+    {
+        return $value ?: ($this->ref_no ?? '—');
     }
 }

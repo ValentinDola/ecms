@@ -20,7 +20,8 @@ class VisaController extends Controller
             ->when($search->isNotEmpty(), function ($query) use ($search) {
                 $term = $search->toString();
                 $query->where(function ($q) use ($term) {
-                    $q->where('visa_number', 'like', "%{$term}%")
+                    $q->where('ref_no', 'like', "%{$term}%")
+                        ->orWhere('visa_number', 'like', "%{$term}%")
                         ->orWhere('passport_number', 'like', "%{$term}%")
                         ->orWhere('applicant_first_name', 'like', "%{$term}%")
                         ->orWhere('applicant_last_name', 'like', "%{$term}%");
@@ -37,7 +38,7 @@ class VisaController extends Controller
     {
         $citizens = Citizen::orderBy('last_name')->orderBy('first_name')->get();
         $selectedCitizen = $request->filled('citizen_id')
-            ? Citizen::find($request->integer('citizen_id'))
+            ? Citizen::find($request->input('citizen_id'))
             : null;
 
         return view('visas.create', compact('citizens', 'selectedCitizen'));

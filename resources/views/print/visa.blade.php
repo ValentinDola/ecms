@@ -1,6 +1,6 @@
 @extends('layouts.print')
 
-@section('title', $visa->visa_number)
+@section('title', $visa->ref_no)
 
 @section('content')
 <h2 style="font-size: 14pt; margin-bottom: 16px;">Visa Record</h2>
@@ -19,7 +19,7 @@
 <div class="section">
     <h2>Visa Details</h2>
     <table>
-        <tr><th>Visa Number</th><td>{{ $visa->visa_number }}</td></tr>
+        <tr><th>Reference Number</th><td>{{ $visa->ref_no }}</td></tr>
         <tr><th>Visa Type</th><td>{{ \App\Models\Visa::TYPES[$visa->visa_type] ?? $visa->visa_type }}</td></tr>
         <tr><th>Status</th><td>{{ \App\Models\Visa::STATUSES[$visa->status] ?? $visa->status }}</td></tr>
         <tr><th>Issue Date</th><td>{{ $visa->issue_date->format('d M Y') }}</td></tr>

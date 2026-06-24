@@ -34,7 +34,7 @@ class AssistanceCaseManagementTest extends TestCase
         $case = AssistanceCase::first();
 
         $response->assertRedirect(route('assistance.show', $case));
-        $this->assertSame("CA-{$year}-00001", $case->case_number);
+        $this->assertSame("TGO-ASC-{$year}-00001", $case->case_number);
         $this->assertSame($citizen->id, $case->citizen_id);
     }
 
@@ -45,7 +45,7 @@ class AssistanceCaseManagementTest extends TestCase
 
         AssistanceCase::factory()->create([
             'citizen_id' => $citizen->id,
-            'case_number' => "CA-{$year}-00003",
+            'case_number' => "TGO-ASC-{$year}-00003",
         ]);
 
         $response = $this->post(route('assistance.store'), [
@@ -57,7 +57,7 @@ class AssistanceCaseManagementTest extends TestCase
         ]);
 
         $response->assertRedirect();
-        $this->assertDatabaseHas('assistance_cases', ['case_number' => "CA-{$year}-00004"]);
+        $this->assertDatabaseHas('assistance_cases', ['case_number' => "TGO-ASC-{$year}-00004"]);
     }
 
     public function test_closing_case_sets_closed_at_on_update(): void

@@ -52,7 +52,7 @@
                     @foreach ($visas as $visa)
                         <tr>
                             <td>{{ $visa->applicant_full_name }}</td>
-                            <td>{{ $visa->visa_number }}</td>
+                            <td>{{ $visa->ref_no }}</td>
                             <td>{{ $visa->passport_number }}</td>
                             <td>{{ \App\Models\Visa::STATUSES[$visa->status] ?? ucfirst($visa->status) }}</td>
                             <td class="text-right">
@@ -74,7 +74,7 @@
                 <table class="table table-sm mb-0">
                     @foreach ($cases as $case)
                         <tr>
-                            <td>{{ $case->case_number }}</td>
+                            <td>{{ $case->ref_no }}</td>
                             <td>{{ $case->citizen->full_name ?? '—' }}</td>
                             <td>{{ \App\Models\AssistanceCase::TYPES[$case->case_type] ?? $case->case_type }}</td>
                             <td>{{ \App\Models\AssistanceCase::STATUSES[$case->status] ?? ucfirst(str_replace('_', ' ', $case->status)) }}</td>

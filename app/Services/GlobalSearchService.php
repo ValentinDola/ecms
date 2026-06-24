@@ -41,6 +41,7 @@ class GlobalSearchService
         return Citizen::query()
             ->where(function ($q) use ($query) {
                 $q->where('full_name', 'like', "%{$query}%")
+                    ->orWhere('ref_no', 'like', "%{$query}%")
                     ->orWhere('passport_number', 'like', "%{$query}%")
                     ->orWhere('phone', 'like', "%{$query}%");
             })
@@ -53,7 +54,8 @@ class GlobalSearchService
     {
         return Visa::query()
             ->where(function ($q) use ($query) {
-                $q->where('visa_number', 'like', "%{$query}%")
+                $q->where('ref_no', 'like', "%{$query}%")
+                    ->orWhere('visa_number', 'like', "%{$query}%")
                     ->orWhere('passport_number', 'like', "%{$query}%")
                     ->orWhere('applicant_first_name', 'like', "%{$query}%")
                     ->orWhere('applicant_last_name', 'like', "%{$query}%");
@@ -67,7 +69,10 @@ class GlobalSearchService
     {
         return AssistanceCase::query()
             ->with('citizen')
-            ->where('case_number', 'like', "%{$query}%")
+            ->where(function ($q) use ($query) {
+                $q->where('ref_no', 'like', "%{$query}%")
+                    ->orWhere('case_number', 'like', "%{$query}%");
+            })
             ->orderByDesc('opened_at')
             ->limit($limit)
             ->get();

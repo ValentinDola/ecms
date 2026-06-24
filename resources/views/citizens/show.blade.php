@@ -22,6 +22,7 @@
             <div class="card-header"><h3 class="card-title">Personal Information</h3></div>
             <div class="card-body p-0">
                 <table class="table mb-0">
+                    <tr><th>Reference Number</th><td>{{ $citizen->ref_no }}</td></tr>
                     <tr><th>Passport</th><td>{{ $citizen->passport_number }}</td></tr>
                     <tr><th>Date of Birth</th><td>{{ $citizen->date_of_birth?->format('d M Y') ?? '—' }}</td></tr>
                     <tr><th>Nationality</th><td>{{ $citizen->nationality }}</td></tr>
@@ -61,7 +62,7 @@
             <table class="table table-sm mb-0">
                 <thead>
                     <tr>
-                        <th>Visa No.</th>
+                        <th>Reference No.</th>
                         <th>Type</th>
                         <th>Status</th>
                         <th>Expires</th>
@@ -71,7 +72,7 @@
                 <tbody>
                     @foreach ($citizen->visas as $visa)
                         <tr>
-                            <td>{{ $visa->visa_number }}</td>
+                            <td>{{ $visa->ref_no }}</td>
                             <td>{{ \App\Models\Visa::TYPES[$visa->visa_type] ?? $visa->visa_type }}</td>
                             <td>{{ \App\Models\Visa::STATUSES[$visa->status] ?? $visa->status }}</td>
                             <td>{{ $visa->expiry_date->format('d M Y') }}</td>
@@ -119,7 +120,7 @@
                 <tbody>
                     @foreach ($citizen->assistanceCases as $case)
                         <tr>
-                            <td>{{ $case->case_number }}</td>
+                            <td>{{ $case->ref_no }}</td>
                             <td>{{ \App\Models\AssistanceCase::TYPES[$case->case_type] ?? $case->case_type }}</td>
                             <td>{{ \App\Models\AssistanceCase::STATUSES[$case->status] ?? $case->status }}</td>
                             <td>{{ $case->opened_at->format('d M Y') }}</td>

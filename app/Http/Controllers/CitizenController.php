@@ -18,6 +18,7 @@ class CitizenController extends Controller
                 $term = $search->toString();
                 $query->where(function ($q) use ($term) {
                     $q->where('full_name', 'like', "%{$term}%")
+                        ->orWhere('ref_no', 'like', "%{$term}%")
                         ->orWhere('passport_number', 'like', "%{$term}%")
                         ->orWhere('phone', 'like', "%{$term}%");
                 });

@@ -18,7 +18,7 @@ class CaseNumberGeneratorTest extends TestCase
 
         $number = app(CaseNumberGenerator::class)->generate($year);
 
-        $this->assertSame("CA-{$year}-00001", $number);
+        $this->assertSame("TGO-ASC-{$year}-00001", $number);
     }
 
     public function test_it_increments_sequence_based_on_existing_cases(): void
@@ -28,11 +28,11 @@ class CaseNumberGeneratorTest extends TestCase
 
         AssistanceCase::factory()->create([
             'citizen_id' => $citizen->id,
-            'case_number' => "CA-{$year}-00007",
+            'case_number' => "TGO-ASC-{$year}-00007",
         ]);
 
         $number = app(CaseNumberGenerator::class)->generate($year);
 
-        $this->assertSame("CA-{$year}-00008", $number);
+        $this->assertSame("TGO-ASC-{$year}-00008", $number);
     }
 }

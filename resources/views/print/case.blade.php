@@ -1,6 +1,6 @@
 @extends('layouts.print')
 
-@section('title', $case->case_number)
+@section('title', $case->ref_no)
 
 @section('content')
 <h2 style="font-size: 14pt; margin-bottom: 16px;">Consular Assistance Case Summary</h2>
@@ -8,7 +8,7 @@
 <div class="section">
     <h2>Case Information</h2>
     <table>
-        <tr><th>Case Number</th><td>{{ $case->case_number }}</td></tr>
+        <tr><th>Reference Number</th><td>{{ $case->ref_no }}</td></tr>
         <tr><th>Case Type</th><td>{{ \App\Models\AssistanceCase::TYPES[$case->case_type] ?? $case->case_type }}</td></tr>
         <tr><th>Status</th><td>{{ \App\Models\AssistanceCase::STATUSES[$case->status] ?? $case->status }}</td></tr>
         <tr><th>Opened</th><td>{{ $case->opened_at->format('d M Y H:i') }}</td></tr>

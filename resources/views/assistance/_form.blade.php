@@ -27,12 +27,12 @@
 
 @if (isset($nextCaseNumber))
     <div class="alert alert-light border">
-        <strong>Next case number:</strong> {{ $nextCaseNumber }} <small class="text-muted">(assigned on save)</small>
+        <strong>Next reference number:</strong> {{ $nextCaseNumber }} <small class="text-muted">(assigned on save)</small>
     </div>
 @elseif ($case)
     <div class="form-group">
-        <label>Case Number</label>
-        <input type="text" class="form-control" value="{{ $case->case_number }}" readonly disabled>
+        <label>Reference Number</label>
+        <input type="text" class="form-control" value="{{ $case->ref_no }}" readonly disabled>
     </div>
 @endif
 

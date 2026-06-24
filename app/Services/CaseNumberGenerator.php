@@ -10,19 +10,19 @@ class CaseNumberGenerator
     public function generate(?int $year = null): string
     {
         $year ??= (int) now()->format('Y');
-        $prefix = "CA-{$year}-";
+        $prefix = "TGO-ASC-{$year}-";
 
         return DB::transaction(function () use ($prefix) {
             $lastCase = AssistanceCase::query()
-                ->where('case_number', 'like', $prefix.'%')
-                ->orderByDesc('case_number')
+                ->where('ref_no', 'like', $prefix.'%')
+                ->orderByDesc('ref_no')
                 ->lockForUpdate()
                 ->first();
 
             $sequence = 1;
 
-            if ($lastCase) {
-                $sequence = (int) substr($lastCase->case_number, -5) + 1;
+            if ($lastCase && preg_match('/(\d{5})$/', $lastCase->ref_no, $matches)) {
+                $sequence = (int) $matches[1] + 1;
             }
 
             return $prefix.str_pad((string) $sequence, 5, '0', STR_PAD_LEFT);

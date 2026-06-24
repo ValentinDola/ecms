@@ -24,7 +24,7 @@ class StoreDocumentRequest extends FormRequest
                 Visa::class,
                 AssistanceCase::class,
             ])],
-            'documentable_id' => ['required', 'integer'],
+            'documentable_id' => ['required', 'uuid'],
             'title' => ['required', 'string', 'max:255'],
             'category' => ['required', 'string', Rule::in(array_keys(Document::CATEGORIES))],
             'file' => ['required', 'file', 'mimes:pdf,jpg,jpeg,png', 'max:10240'],

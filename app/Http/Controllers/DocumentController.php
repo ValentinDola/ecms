@@ -41,7 +41,7 @@ class DocumentController extends Controller
     {
         $parent = $this->resolveParent(
             $request->input('documentable_type'),
-            (int) $request->input('documentable_id')
+            $request->input('documentable_id')
         );
 
         $document = $this->storageService->store($parent, $request->file('file'), [

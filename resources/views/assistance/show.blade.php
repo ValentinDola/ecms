@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', $case->case_number)
-@section('page-title', $case->case_number)
+@section('title', $case->ref_no)
+@section('page-title', $case->ref_no)
 
 @section('content')
 <div class="mb-3">
@@ -22,7 +22,7 @@
             <div class="card-header"><h3 class="card-title">Case Details</h3></div>
             <div class="card-body p-0">
                 <table class="table mb-0">
-                    <tr><th>Case Number</th><td>{{ $case->case_number }}</td></tr>
+                    <tr><th>Reference Number</th><td>{{ $case->ref_no }}</td></tr>
                     <tr><th>Case Type</th><td>{{ \App\Models\AssistanceCase::TYPES[$case->case_type] ?? $case->case_type }}</td></tr>
                     <tr><th>Status</th><td>{{ \App\Models\AssistanceCase::STATUSES[$case->status] ?? $case->status }}</td></tr>
                     <tr><th>Opened</th><td>{{ $case->opened_at->format('d M Y H:i') }}</td></tr>

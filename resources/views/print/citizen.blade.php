@@ -9,6 +9,7 @@
     <h2>Personal Details</h2>
     <table>
         <tr><th>Full Name</th><td>{{ $citizen->full_name }}</td></tr>
+        <tr><th>Reference Number</th><td>{{ $citizen->ref_no }}</td></tr>
         <tr><th>Passport Number</th><td>{{ $citizen->passport_number }}</td></tr>
         <tr><th>Date of Birth</th><td>{{ $citizen->date_of_birth?->format('d M Y') ?? '—' }}</td></tr>
         <tr><th>Nationality</th><td>{{ $citizen->nationality }}</td></tr>
@@ -33,7 +34,7 @@
         <table>
             @foreach ($citizen->visas as $visa)
                 <tr>
-                    <th>{{ $visa->visa_number }}</th>
+                    <th>{{ $visa->ref_no }}</th>
                     <td>{{ ucfirst($visa->visa_type) }} — {{ $visa->issue_date->format('d M Y') }} to {{ $visa->expiry_date->format('d M Y') }}</td>
                 </tr>
             @endforeach
@@ -47,7 +48,7 @@
         <table>
             @foreach ($citizen->assistanceCases as $case)
                 <tr>
-                    <th>{{ $case->case_number }}</th>
+                    <th>{{ $case->ref_no }}</th>
                     <td>{{ \App\Models\AssistanceCase::TYPES[$case->case_type] ?? $case->case_type }} — {{ ucfirst(str_replace('_', ' ', $case->status)) }}</td>
                 </tr>
             @endforeach

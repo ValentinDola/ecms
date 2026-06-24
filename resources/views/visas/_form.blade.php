@@ -51,9 +51,9 @@
 <div class="row">
     <div class="col-md-4">
         <div class="form-group">
-            <label for="visa_number">Visa Number <span class="text-danger">*</span></label>
-            <input type="text" name="visa_number" id="visa_number" class="form-control"
-                   value="{{ old('visa_number', $visa?->visa_number ?? '') }}" required>
+            <label>Reference Number</label>
+            <input type="text" class="form-control" value="{{ old('ref_no', $visa?->ref_no ?? 'Generated on save') }}" readonly disabled>
+            <small class="form-text text-muted">This reference number is issued automatically.</small>
         </div>
     </div>
     <div class="col-md-4">

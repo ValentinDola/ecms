@@ -9,8 +9,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('visas', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('citizen_id')->nullable()->constrained()->nullOnDelete();
+            $table->uuid('id')->primary();
+            $table->uuid('citizen_id')->nullable()->constrained()->nullOnDelete();
+            $table->string('ref_no')->unique();
             $table->string('visa_number')->unique();
             $table->string('passport_number');
             $table->string('applicant_first_name');

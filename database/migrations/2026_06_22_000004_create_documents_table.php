@@ -9,8 +9,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('documents', function (Blueprint $table) {
-            $table->id();
-            $table->morphs('documentable');
+            $table->uuid('id')->primary();
+            $table->string('ref_no')->unique();
+            $table->uuidMorphs('documentable');
             $table->string('title');
             $table->string('category');
             $table->string('file_path');

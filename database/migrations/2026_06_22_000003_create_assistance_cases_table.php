@@ -9,9 +9,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('assistance_cases', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id')->primary();
+            $table->string('ref_no')->unique();
             $table->string('case_number')->unique();
-            $table->foreignId('citizen_id')->constrained()->cascadeOnDelete();
+            $table->uuid('citizen_id')->constrained()->cascadeOnDelete();
             $table->string('case_type');
             $table->string('status')->default('open');
             $table->dateTime('opened_at');

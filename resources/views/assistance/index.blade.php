@@ -42,7 +42,7 @@
             <tbody>
                 @forelse ($cases as $case)
                     <tr>
-                        <td><strong>{{ $case->case_number }}</strong></td>
+                        <td><strong>{{ $case->ref_no }}</strong></td>
                         <td>
                             {{ $case->citizen->full_name ?? '—' }}
                             @if ($case->citizen)

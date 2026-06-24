@@ -132,7 +132,7 @@ class DocumentManagementTest extends TestCase
 
         $response = $this->post(route('documents.store'), [
             'documentable_type' => AssistanceCase::class,
-            'documentable_id' => 99999,
+            'documentable_id' => '00000000-0000-0000-0000-000000000000',
             'title' => 'Orphan Document',
             'category' => 'other',
             'file' => $file,

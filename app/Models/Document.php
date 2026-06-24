@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Traits\HasHybridIdentifier;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
@@ -10,15 +11,12 @@ use Illuminate\Support\Facades\Storage;
 class Document extends Model
 {
     use HasFactory;
+    use HasHybridIdentifier;
 
-    public const CATEGORIES = [
-        'passport' => 'Passport',
-        'certificate' => 'Certificate',
-        'supporting' => 'Supporting',
-        'other' => 'Other',
-    ];
+    protected static string $refNoModule = 'DOC';
 
     protected $fillable = [
+        'ref_no',
         'documentable_type',
         'documentable_id',
         'title',
@@ -27,6 +25,13 @@ class Document extends Model
         'mime_type',
         'file_size',
         'uploaded_at',
+    ];
+
+    public const CATEGORIES = [
+        'passport' => 'Passport',
+        'certificate' => 'Certificate',
+        'supporting' => 'Supporting',
+        'other' => 'Other',
     ];
 
     protected function casts(): array
@@ -101,8 +106,8 @@ class Document extends Model
 
         return match ($this->documentable_type) {
             Citizen::class => $this->documentable->full_name,
-            Visa::class => $this->documentable->visa_number,
-            AssistanceCase::class => $this->documentable->case_number,
+            Visa::class => $this->documentable->ref_no,
+            AssistanceCase::class => $this->documentable->ref_no,
             default => '#'.$this->documentable_id,
         };
     }

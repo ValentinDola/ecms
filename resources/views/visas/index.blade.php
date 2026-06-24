@@ -43,7 +43,7 @@
                                 <br><small class="text-muted">Linked: {{ $visa->citizen->full_name }}</small>
                             @endif
                         </td>
-                        <td>{{ $visa->visa_number }}</td>
+                        <td>{{ $visa->ref_no }}</td>
                         <td>{{ $visa->passport_number }}</td>
                         <td>{{ \App\Models\Visa::TYPES[$visa->visa_type] ?? $visa->visa_type }}</td>
                         <td>

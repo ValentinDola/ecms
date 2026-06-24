@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title', 'Edit Case')
-@section('page-title', 'Edit ' . $case->case_number)
+@section('page-title', 'Edit ' . $case->ref_no)
 
 @section('content')
 <div class="card">

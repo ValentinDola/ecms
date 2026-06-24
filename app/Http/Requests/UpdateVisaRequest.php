@@ -17,12 +17,6 @@ class UpdateVisaRequest extends FormRequest
     {
         return [
             'citizen_id' => ['nullable', 'exists:citizens,id'],
-            'visa_number' => [
-                'required',
-                'string',
-                'max:255',
-                Rule::unique('visas', 'visa_number')->ignore($this->route('visa')),
-            ],
             'passport_number' => ['required', 'string', 'max:255'],
             'applicant_first_name' => ['required', 'string', 'max:255'],
             'applicant_last_name' => ['required', 'string', 'max:255'],

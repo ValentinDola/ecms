@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Traits\HasHybridIdentifier;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -10,8 +11,12 @@ use Illuminate\Database\Eloquent\Relations\MorphMany;
 class Citizen extends Model
 {
     use HasFactory;
+    use HasHybridIdentifier;
+
+    protected static string $refNoModule = 'CIT';
 
     protected $fillable = [
+        'ref_no',
         'first_name',
         'last_name',
         'full_name',

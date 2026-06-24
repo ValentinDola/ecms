@@ -24,7 +24,8 @@ class AssistanceCaseController extends Controller
             ->when($search->isNotEmpty(), function ($query) use ($search) {
                 $term = $search->toString();
                 $query->where(function ($q) use ($term) {
-                    $q->where('case_number', 'like', "%{$term}%")
+                    $q->where('ref_no', 'like', "%{$term}%")
+                        ->orWhere('case_number', 'like', "%{$term}%")
                         ->orWhere('description', 'like', "%{$term}%")
                         ->orWhereHas('citizen', function ($citizenQuery) use ($term) {
                             $citizenQuery->where('full_name', 'like', "%{$term}%")
