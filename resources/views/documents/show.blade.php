@@ -6,7 +6,7 @@
 @section('content')
 <div class="mb-3">
     <a href="{{ route('documents.download', $document) }}" class="btn btn-primary btn-sm">
-        <i class="fas fa-download"></i> Download
+        <i width="16" height="16" data-lucide="download" class="mr-2"></i> Download
     </a>
     @if ($document->parentShowUrl())
         <a href="{{ $document->parentShowUrl() }}" class="btn btn-default btn-sm">Back to {{ $document->parent_type_label }}</a>
@@ -17,7 +17,7 @@
           data-confirm-title="Delete document">
         @csrf
         @method('DELETE')
-        <button type="submit" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> Delete</button>
+        <button type="submit" class="btn btn-danger btn-sm"><i width="16" height="16" data-lucide="trash-2" class="mr-2"></i> Delete</button>
     </form>
 </div>
 

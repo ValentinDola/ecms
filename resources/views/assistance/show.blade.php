@@ -5,14 +5,14 @@
 
 @section('content')
 <div class="mb-3">
-    <a href="{{ route('assistance.edit', $case) }}" class="btn btn-primary btn-sm"><i class="fas fa-edit"></i> Edit</a>
-    <a href="{{ route('print.case', $case) }}" class="btn btn-default btn-sm" target="_blank"><i class="fas fa-print"></i> Print</a>
+    <a href="{{ route('assistance.edit', $case) }}" class="btn btn-primary btn-sm"><i width="16" height="16" data-lucide="square-pen" class="mr-2"></i> Edit</a>
+    <a href="{{ route('print.case', $case) }}" class="btn btn-default btn-sm" target="_blank"><i width="16" height="16" data-lucide="printer" class="mr-2"></i> Print</a>
     <form action="{{ route('assistance.destroy', $case) }}" method="POST" class="d-inline"
           data-confirm="This will permanently delete this assistance case and cannot be undone."
           data-confirm-title="Delete assistance case">
         @csrf
         @method('DELETE')
-        <button type="submit" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> Delete</button>
+        <button type="submit" class="btn btn-danger btn-sm"><i width="16" height="16" data-lucide="trash-2" class="mr-2"></i> Delete</button>
     </form>
 </div>
 

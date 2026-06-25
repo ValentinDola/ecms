@@ -23,14 +23,20 @@
         </div>
         <div class="col-md-3">
             <div class="form-group mb-2">
+                
                 <label for="doc_file_{{ $parent->id }}" class="mb-1">File <span class="text-danger">*</span></label>
+                {{-- <i data-lucide="file-up" class="mr-2"></i> --}}
+{{-- <button type="button" class="btn btn-primary btn-sm mb-2">
+                <i width="16" height="16" data-lucide="clipboard-plus" class="mr-2"></i>  --}}
                 <input type="file" name="file" id="doc_file_{{ $parent->id }}" class="form-control-file form-control-sm"
                        accept=".pdf,.jpg,.jpeg,.png" required>
+            {{-- </button> --}}
+                
             </div>
         </div>
         <div class="col-md-2 d-flex align-items-end">
             <button type="submit" class="btn btn-primary btn-sm mb-2">
-                <i class="fas fa-upload"></i> Upload
+                <i width="16" height="16" data-lucide="upload" class="mr-2"></i> Upload
             </button>
         </div>
     </div>

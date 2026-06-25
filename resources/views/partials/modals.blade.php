@@ -4,7 +4,7 @@
         <div class="modal-content">
             <div class="modal-header bg-danger text-white">
                 <h5 class="modal-title" id="confirmModalTitle">
-                    <i class="fas fa-exclamation-triangle mr-1"></i> Confirm deletion
+                    <i data-lucide="exclamation-triangle" class="mr-2"></i> Confirm deletion
                 </h5>
                 <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -16,7 +16,7 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
                 <button type="button" class="btn btn-danger" id="confirmModalSubmit">
-                    <i class="fas fa-trash mr-1"></i> Delete
+                    <i data-lucide="trash-2" class="mr-2"></i> Delete
                 </button>
             </div>
         </div>
@@ -25,13 +25,19 @@
 
 {{-- Flash / validation alert modal --}}
 @php
-    $flashType = session('success') ? 'success' : (session('error') ? 'danger' : ($errors->any() ? 'danger' : null));
+    $flashType = session('success')
+        ? 'success'
+        : (session('error') ? 'danger' : ($errors->any() ? 'danger' : null));
+
     $flashTitle = match ($flashType) {
         'success' => 'Success',
         'danger' => 'Attention',
         default => null,
     };
-    $flashIcon = $flashType === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle';
+
+    $flashIcon = $flashType === 'success'
+        ? 'check-circle'
+        : 'circle-alert';
 @endphp
 
 @if ($flashType)
@@ -40,7 +46,7 @@
             <div class="modal-content">
                 <div class="modal-header bg-{{ $flashType }} text-white">
                     <h5 class="modal-title" id="flashModalTitle">
-                        <i class="fas {{ $flashIcon }} mr-1"></i> {{ $flashTitle }}
+                        <<i data-lucide="{{ $flashIcon }}" class="mr-1"></i> {{ $flashTitle }}
                     </h5>
                     <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -88,10 +94,22 @@
         var title = $(this).data('confirm-title') || 'Confirm deletion';
         var submitLabel = $(this).data('confirm-submit') || 'Delete';
 
-        $('#confirmModalTitle').html('<i class="fas fa-exclamation-triangle mr-1"></i> ' + title);
+        $('#confirmModalTitle').html(
+        '<i data-lucide="exclamation-triangle" class="mr-1"></i> ' + title
+        );
         $('#confirmModalMessage').text(message);
-        $('#confirmModalSubmit').html('<i class="fas fa-trash mr-1"></i> ' + submitLabel);
+
+        $('#confirmModalSubmit').html(
+            '<i data-lucide="trash-2" class="mr-1"></i> ' + submitLabel
+        );
         $('#confirmModal').modal('show');
+
+        if (window.lucide) {
+            lucide.createIcons();
+        }
+
+       
+        
     });
 
     $('#confirmModalSubmit').on('click', function () {
@@ -113,5 +131,8 @@
         $('#flashModal').modal('show');
     @endif
 })(jQuery);
+</script>
+<script>
+    lucide.createIcons();
 </script>
 @endpush

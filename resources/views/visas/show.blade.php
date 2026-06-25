@@ -5,14 +5,14 @@
 
 @section('content')
 <div class="mb-3">
-    <a href="{{ route('visas.edit', $visa) }}" class="btn btn-primary btn-sm"><i class="fas fa-edit"></i> Edit</a>
-    <a href="{{ route('print.visa', $visa) }}" class="btn btn-default btn-sm" target="_blank"><i class="fas fa-print"></i> Print</a>
+    <a href="{{ route('visas.edit', $visa) }}" class="btn btn-primary btn-sm"><i width="16" height="16" data-lucide="square-pen" class="mr-2"></i> Edit</a>
+    <a href="{{ route('print.visa', $visa) }}" class="btn btn-default btn-sm" target="_blank"><i width="16" height="16" data-lucide="printer" class="mr-2"></i> Print</a>
     <form action="{{ route('visas.destroy', $visa) }}" method="POST" class="d-inline"
           data-confirm="This will permanently delete the visa record and cannot be undone."
           data-confirm-title="Delete visa record">
         @csrf
         @method('DELETE')
-        <button type="submit" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> Delete</button>
+        <button type="submit" class="btn btn-danger btn-sm"><i width="16" height="16" data-lucide="trash-2" class="mr-2"></i> Delete</button>
     </form>
 </div>
 

@@ -11,7 +11,7 @@
                 <h3>{{ $citizenCount }}</h3>
                 <p>Registered Citizens</p>
             </div>
-            <div class="icon"><i width="100" height="100" data-lucide="users"></i></div>
+            <div class="icon"><i width="90" height="90" data-lucide="users"></i></div>
             <a href="{{ route('citizens.index') }}" class="small-box-footer">View all <i data-lucide="move-right"></i></a>
         </div>
     </div>

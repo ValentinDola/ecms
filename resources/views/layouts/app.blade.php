@@ -45,7 +45,9 @@
 
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
         <a href="{{ route('dashboard') }}" class="brand-link">
-            <span class="brand-text font-weight-light ml-3">ECMS</span>
+            <span class="brand-text font-weight-light ml-3" style="letter-spacing: 40px;">
+    ECMS
+</span>
         </a>
         <div class="sidebar">
             <nav class="mt-2">
