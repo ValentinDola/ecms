@@ -88,7 +88,7 @@ class DocumentController extends Controller
             ->with('success', 'Document deleted.');
     }
 
-    private function resolveParent(string $type, int $id): Model
+    private function resolveParent(string $type, string $id): Model
     {
         return match ($type) {
             Citizen::class => Citizen::findOrFail($id),

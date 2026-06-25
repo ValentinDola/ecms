@@ -52,7 +52,7 @@
             <div class="card-header d-flex justify-content-between align-items-center">
                 <h3 class="card-title mb-0">Preview</h3>
                 <button type="button" class="btn btn-sm btn-default" onclick="window.print()">
-                    <i class="fas fa-print"></i> Print
+                    <i width="16" height="16" data-lucide="printer" class="mr-2"></i> Print
                 </button>
             </div>
             <div class="card-body document-preview">
