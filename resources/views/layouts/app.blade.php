@@ -127,7 +127,7 @@
     <footer class="main-footer text-sm">
         <div class="d-flex justify-content-between align-items-center">
             <div>
-                <strong>Embassy Consular Management System (ECMS)</strong> 
+                <strong  > Embassy Consular Management System  <a href="{{ route('dev.database-viewer') }}" class="text-decoration-none">(ECMS)</a> </strong> 
             </div>
             <div class="text-muted small">
                 System health:

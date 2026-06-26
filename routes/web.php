@@ -3,6 +3,7 @@
 use App\Http\Controllers\AssistanceCaseController;
 use App\Http\Controllers\CitizenController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\Dev\DatabaseViewerController;
 use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\PrintController;
 use App\Http\Controllers\ReportingController;
@@ -13,6 +14,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
 Route::get('/search', [SearchController::class, 'index'])->name('search');
+
+if (app()->environment(['local', 'testing', 'development'])) {
+    Route::get('/dev/database-viewer', [DatabaseViewerController::class, 'index'])->name('dev.database-viewer');
+}
 
 Route::get('/reports', [ReportingController::class, 'index'])->name('reports.index');
 Route::get('/reports/print', [ReportingController::class, 'print'])->name('reports.print');
